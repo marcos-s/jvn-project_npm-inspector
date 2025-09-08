@@ -1,5 +1,6 @@
 <template>
-    <div id="app">
+  <!-- Test comment for hook testing -->
+  <div id="app">
       <div class="app-container">
         <PackageInput @search-package="handlePackageSearch" />
         <PackageScorecard 

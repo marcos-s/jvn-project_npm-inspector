@@ -32,9 +32,9 @@ public class NpmPackageService {
                 .uri("/{packageName}", packageName)
                 .retrieve()
                 .onStatus(status -> status.is4xxClientError(), 
-                    _ -> Mono.error(new RuntimeException("Package '" + packageName + "' not found")))
+                    response -> Mono.error(new RuntimeException("Package '" + packageName + "' not found")))
                 .onStatus(status -> status.is5xxServerError(), 
-                    _ -> Mono.error(new RuntimeException("NPM Registry API is currently unavailable")))
+                    response -> Mono.error(new RuntimeException("NPM Registry API is currently unavailable")))
                 .bodyToMono(String.class)
                 .map(this::parsePackageData)
                 .onErrorResume(WebClientResponseException.class, ex -> 

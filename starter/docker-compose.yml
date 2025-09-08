@@ -1,0 +1,23 @@
+services:
+  npm-inspector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: npm-package-inspector
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/packages/react"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - npm-inspector-network
+
+networks:
+  npm-inspector-network:
+    driver: bridge

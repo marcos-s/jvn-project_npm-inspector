@@ -15,9 +15,10 @@
     <description>Spring Boot + Vue Starter Template</description>
 
     <properties>
-        <java.version>24</java.version>
+        <java.version>21</java.version>
         <node.version>v22.19.0</node.version>
         <npm.version>10.9.3</npm.version>
+        <frontend.skip>false</frontend.skip>
     </properties>
 
     <dependencies>
@@ -61,6 +62,11 @@
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.7.6</version>
+                <configuration>
+                    <skip>${frontend.skip}</skip>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <workingDirectory>src/frontend</workingDirectory>
+                </configuration>
 
                 <executions>
                     <execution>
@@ -97,11 +103,6 @@
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <nodeVersion>${node.version}</nodeVersion>
-                    <workingDirectory>src/frontend</workingDirectory>
-                </configuration>
-
             </plugin>
 
             <plugin>
