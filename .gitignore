@@ -24,3 +24,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Audit files
+*audit*.txt
+*audit*.json
+npm-audit-results.json
+yarn-audit-results.json
