@@ -102,7 +102,7 @@ The NPM Package Dependency Inspector is a full-stack application built with **Sp
 
 4. **Frontend will be available at** `http://localhost:3000`
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Get Package Information
 ```http
@@ -141,7 +141,7 @@ The application uses a **multi-stage Dockerfile** for optimal production images:
 2. **Backend Builder Stage**: Compiles the Spring Boot application
 3. **Production Runtime Stage**: Creates a minimal JRE image with the built artifacts
 
-## 🔧 Development Tools
+## Development Tools
 
 ### Pre-commit Hooks
 The project includes pre-commit hooks that enforce code quality:
