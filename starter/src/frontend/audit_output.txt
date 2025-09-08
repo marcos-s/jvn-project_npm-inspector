@@ -1,4 +1,4 @@
-^C# npm audit report
+# npm audit report
 
 cross-spawn  <6.0.6
 Severity: high
@@ -61,5 +61,3 @@ To address issues that do not require attention, run:
 
 To address all issues (including breaking changes), run:
   npm audit fix --force
-Terminate batch job (Y/N)? 
-^CThe syntax of the command is incorrect.
