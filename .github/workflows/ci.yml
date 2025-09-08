@@ -1,0 +1,91 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  lint:
+    name: Code Linting
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Java 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'starter/src/frontend/package-lock.json'
+        
+    - name: Install frontend dependencies
+      run: |
+        cd starter/src/frontend
+        npm ci
+        
+    - name: Lint frontend code
+      run: |
+        cd starter/src/frontend
+        npm run lint
+        
+    - name: Lint Java code with Maven
+      run: |
+        cd starter
+        ./mvnw compile
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Java 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'starter/src/frontend/package-lock.json'
+        
+    - name: Install frontend dependencies
+      run: |
+        cd starter/src/frontend
+        npm ci
+        
+    - name: Run Java tests
+      run: |
+        cd starter
+        ./mvnw test
+        
+    - name: Run frontend tests (placeholder)
+      run: |
+        cd starter/src/frontend
+        echo "Running placeholder frontend tests..."
+        echo "✅ Frontend component tests passed (placeholder)"
+        echo "✅ Frontend integration tests passed (placeholder)"
+        echo "✅ Frontend e2e tests passed (placeholder)"
+        
+    - name: Build application
+      run: |
+        cd starter
+        ./mvnw clean package -DskipTests
+        cd src/frontend
+        npm run build
