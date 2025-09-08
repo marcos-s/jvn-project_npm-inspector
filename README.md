@@ -1,5 +1,7 @@
 # NPM Package Dependency Inspector
 
+![Demo](demo.png)
+
 A  web application that analyzes public NPM packages and displays metrics to help developers make decisions about the libraries they use.
 
 ## Project Overview
