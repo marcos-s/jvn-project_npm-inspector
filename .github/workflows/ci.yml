@@ -42,6 +42,7 @@ jobs:
     - name: Lint Java code with Maven
       run: |
         cd starter
+        chmod +x ./mvnw
         ./mvnw compile
 
   test:
@@ -73,6 +74,7 @@ jobs:
     - name: Run Java tests
       run: |
         cd starter
+        chmod +x ./mvnw
         ./mvnw test
         
     - name: Run frontend tests (placeholder)
@@ -86,6 +88,7 @@ jobs:
     - name: Build application
       run: |
         cd starter
+        chmod +x ./mvnw
         ./mvnw clean package -DskipTests
         cd src/frontend
         npm run build
