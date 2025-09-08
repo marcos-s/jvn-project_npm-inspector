@@ -39,6 +39,14 @@
           const response = await axios.get(`/api/packages/${packageName}`);
           this.packageData = response.data;
         } catch (err) {
+          // Debug logging to see what's actually happening
+          console.log('=== ERROR DEBUG ===');
+          console.log('Error object:', err);
+          console.log('Error response:', err.response);
+          console.log('Error status:', err.response?.status);
+          console.log('Error data:', err.response?.data);
+          console.log('==================');
+          
           if (err.response && err.response.status === 404) {
             this.error = `Package "${packageName}" not found. Please check the package name and try again.`;
           } else if (err.response && err.response.status >= 500) {
