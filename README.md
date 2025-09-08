@@ -141,6 +141,11 @@ The application uses a **multi-stage Dockerfile** for optimal production images:
 2. **Backend Builder Stage**: Compiles the Spring Boot application
 3. **Production Runtime Stage**: Creates a minimal JRE image with the built artifacts
 
+**Benefits:**
+- Smaller production image size
+- Better security
+- Faster deployment and startup times
+
 ## Development Tools
 
 ### Pre-commit Hooks
